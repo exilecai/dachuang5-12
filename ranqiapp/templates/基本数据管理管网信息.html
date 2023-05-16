@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基本数据管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark  fixed-top  ">
+    <div class="container">
+        <a class="navbar-brand" href="#">燃煤之籍
+            <img src="../imgg/img/gas.png" class="img-fluid" alt="">
+        </a>
+
+        <!-- 折叠按钮，用于将导航菜单折叠起来 -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- 折叠的导航菜单 -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">桌面</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">基础数据管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">输差管理</a>
+                </li>
+                <!--下拉菜单样式定义-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        日常管理
+                    </a>
+                    <!-- 下拉菜单内容 -->
+                    <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">设备运维管理</a></li>
+                        <li><a class="dropdown-item" href="#">气量交接管理</a></li>
+                        <li><a class="dropdown-item" href="#">气损记录管理</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        数据查询分析
+                    </a>
+                    <!-- 下拉菜单内容 -->
+                    <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">销气数据</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">数据分析</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!--表格切换以及搜索-->
+<div class="container mt-3" style="margin-top: 50px">
+    <div class="row d-flex flex-column">
+        <div class="col">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="list-group list-group-horizontal" id="instrument-list">
+                    <a aria-current="true" class="list-group-item list-group-item-action active" href="#table1">tab1</a>
+                    <a class="list-group-item list-group-item-action" href="#table2">tab2</a>
+                    <a class="list-group-item list-group-item-action" href="#table3">tab3</a>
+                    <a class="list-group-item list-group-item-action" href="#table4">tab4</a>
+                </div>
+                <div class="d-flex  align-items-center ms-3 flex-grow-1 ">
+                <form class="d-flex  align-items-center ms-3 flex-grow-1 ">
+                    <input type="text" class="form-control me-2 " id="search1.1" placeholder="搜索"
+                           name="search">
+                    <button class="btn btn-outline-success " type="submit">Search</button>
+                </form>
+                <div class="d-flex align-items-center flex-grow-1">
+                    <button class="btn btn-sm btn-primary ms-2">新增</button>
+                    <button class="btn btn-sm btn-secondary ms-2">批量删除</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--表格-->
+   <section class="mt-3">
+       <div class="container">
+           <div class="col-9">
+               <table class="table table-striped table-bordered" id="table1">
+                   <thead>
+                   <tr>
+                       <th scope="col">勾选框</th>
+                       <th scope="col">标题</th>
+                       <th scope="col">作者</th>
+                       <th scope="col">时间</th>
+                       <th scope="col">地点</th>
+                       <th scope="col">状态</th>
+                       <th scope="col">操作</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <!--第一行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-1" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-1"></label>
+                           </div>
+                       </td>
+                       <td>Lorem ipsum</td>
+                       <td>Lorem 456</td>
+                       <td>Lorem ipsum</td>
+                       <td>Lorem 123</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.1" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.1"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第二行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-2" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-2"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.2" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.2"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第三行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-3" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-3"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.3" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.3"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第四行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-4" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-4"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.4" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.4"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第五行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-5" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-5"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.5" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.5"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第六行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-6" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-6"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.6" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.6"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第七行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-7" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-7"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.7" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.7"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第八行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-8" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-8"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.8" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.8"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第九行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-9" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-9"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.9" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.9"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-10" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-10"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.10" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.10"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十一行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-11" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-11"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.11" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.11"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十二行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-12" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-12"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.12" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.12"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十三行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="1-13" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="1-13"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="1.13" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="1.13"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   </tbody>
+               </table>
+
+
+
+
+
+               <table class="table table-striped table-bordered" id="table2" style="display: none;">
+                   <thead>
+                   <tr>
+                       <th scope="col">勾选框</th>
+                       <th scope="col">标题</th>
+                       <th scope="col">作者</th>
+                       <th scope="col">时间</th>
+                       <th scope="col">地点</th>
+                       <th scope="col">状态</th>
+                       <th scope="col">操作</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <!--第一行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-1" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-1"></label>
+                           </div>
+                       </td>
+                       <td>Lorem ipsum</td>
+                       <td>Lorem 456</td>
+                       <td>Lorem ipsum</td>
+                       <td>Lorem 123</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.1" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.1"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第二行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-2" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-2"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.2" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.2"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第三行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-3" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-3"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.3" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.3"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第四行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-4" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-4"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.4" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.4"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第五行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-5" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-5"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.5" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.5"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第六行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-6" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-6"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.6" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.6"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第七行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-7" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-7"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.7" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.7"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第八行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-8" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-8"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.8" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.8"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第九行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-9" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-9"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.9" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.9"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-10" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-10"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.10" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.10"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十一行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-11" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-11"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.11" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.11"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十二行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-12" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-12"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.12" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.12"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十三行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="2-13" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="2-13"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="2.13" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="2.13"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   </tbody>
+               </table>
+
+
+               <table class="table table-striped table-bordered" id="table3" style="display: none;">
+                   <thead>
+                   <tr>
+                       <th scope="col">勾选框</th>
+                       <th scope="col">标题</th>
+                       <th scope="col">作者</th>
+                       <th scope="col">时间</th>
+                       <th scope="col">地点</th>
+                       <th scope="col">状态</th>
+                       <th scope="col">操作</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <!--第一行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-1" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-1"></label>
+                           </div>
+                       </td>
+                       <td>Lorem ipsum</td>
+                       <td>Lorem 456</td>
+                       <td>Lorem ipsum</td>
+                       <td>Lorem 123</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.1" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.1"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第二行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-2" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-2"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.2" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.2"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第三行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-3" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-3"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.3" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.3"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第四行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-4" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-4"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.4" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.4"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第五行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-5" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-5"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.5" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.5"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第六行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-6" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-6"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.6" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.6"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第七行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-7" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-7"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.7" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.7"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第八行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-8" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-8"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.8" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.8"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第九行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-9" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-9"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.9" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.9"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-10" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-10"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.10" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.10"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十一行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-11" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-11"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.11" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.11"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十二行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-12" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-12"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.12" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.12"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十三行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="3-13" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="3-13"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="3.13" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="3.13"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   </tbody>
+               </table>
+
+
+               <table class="table table-striped table-bordered" id="table4" style="display: none;">
+                   <thead>
+                                      <tr>
+                       <th scope="col">勾选框</th>
+                       <th scope="col">标题</th>
+                       <th scope="col">作者</th>
+                       <th scope="col">时间</th>
+                       <th scope="col">地点</th>
+                       <th scope="col">状态</th>
+                       <th scope="col">操作</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <!--第一行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-1" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-1"></label>
+                           </div>
+                       </td>
+                       <td>Lorem ipsum</td>
+                       <td>Lorem 456</td>
+                       <td>Lorem ipsum</td>
+                       <td>Lorem 123</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.1" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.1"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第二行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-2" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-2"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.2" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.2"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第三行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-3" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-3"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.3" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.3"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第四行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-4" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-4"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.4" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.4"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第五行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-5" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-5"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.5" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.5"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第六行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-6" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-6"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.6" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.6"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第七行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-7" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-7"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.7" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.7"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第八行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-8" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-8"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.8" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.8"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第九行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-9" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-9"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.9" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.9"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-10" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-10"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.10" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.10"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十一行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-11" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-11"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.11" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.11"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十二行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-12" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-12"></label>
+                           </div>
+                       </td>
+                       <td>Moon River</td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.12" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.12"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   <!--第十三行-->
+                   <tr>
+                       <td>
+                           <div class="form-check">
+                               <input class="form-check-input" id="4-13" name="option1" type="checkbox"
+                                      value="something">
+                               <label class="form-check-label" for="4-13"></label>
+                           </div>
+                       </td>
+                       <td>Moon </td>
+                       <td>Mancini</td>
+                       <td>Chopin</td>
+                       <td>Intermediate</td>
+                       <td>
+                           <div class="form-check form-switch">
+                               <input checked class="form-check-input" id="4.13" name="darkmode" type="checkbox"
+                                      value="yes">
+                               <label class="form-check-label" for="4.13"></label>
+                           </div>
+                       </td>
+                       <td>
+                           <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm ms-2">编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm ms-2">删除</button>
+
+                           </div>
+                       </td>
+                   </tr>
+                   </tbody>
+               </table>
+           </div>
+       </div>
+   </section>
+
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+
+</script>
+<script>
+  // 获取所有的表格和按钮元素
+const tables = document.querySelectorAll('table');
+const buttons = document.querySelectorAll('.list-group-item');
+
+// 遍历所有的按钮元素，并为每个按钮添加点击事件处理程序
+buttons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    // 隐藏所有表格
+    tables.forEach(table => {
+      table.style.display = 'none';
+    });
+    // 显示当前按钮对应的表格
+    tables[index].style.display = 'table';
+    // 将当前按钮设为 active 状态，移除其他按钮的 active 状态
+    buttons.forEach(btn => {
+      btn.classList.remove('active');
+    });
+    button.classList.add('active');
+  });
+});
+
+</script>
+</body>
+</html>

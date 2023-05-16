@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous"
+    /><!--bootstrap-->
+    <link rel="stylesheet" href="style.css"/><!--nav css-->
+    <script src="https://kit.fontawesome.com/c8924a8203.js" crossorigin="anonymous"></script><!--引入icon库-->
+    <link
+            type="text/css"
+            rel="stylesheet"
+            href="//cdn.jsdelivr.net/npm/jsmind/style/jsmind.css"
+    /><!--jsmind-->
+    <style type="text/css">
+        #jsmind_container {
+            width: 5000px;
+            height: 700px;
+            border: solid 1px #ccc;
+            /*background:#f4f4f4;*/
+            background: #f4f4f4;
+        }
+    </style>
+
+
+    <style>
+        body {
+            background-color: #fbfbfb;
+        }
+
+        @media (min-width: 991.98px) {
+            main {
+                padding-left: 240px;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 58px 0 0; /* Height of navbar */
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+            width: 240px;
+            z-index: 600;
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        .sidebar .active {
+            border-radius: 5px;
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+        }
+    </style>
+
+    <style>
+        .card {
+            width: /*190*/300px;
+            height: /*274*/380px;
+            background: white;
+            padding: .4em;
+            border-radius: 6px;
+        }
+
+        .card-image {
+            background-color: rgb(236, 236, 236);
+            width: 100%;
+            height: 60%;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .card-image:hover {
+            transform: scale(0.98);
+        }
+
+        .category {
+            text-transform: uppercase;
+            font-size: 0.7em;
+            font-weight: 600;
+            color: rgb(63, 121, 230);
+            padding: 10px 7px 0;
+        }
+
+        .category:hover {
+            cursor: pointer;
+        }
+
+        .heading {
+            font-weight: 600;
+            color: rgb(88, 87, 87);
+            padding: 7px;
+        }
+
+        .heading:hover {
+            cursor: pointer;
+        }
+
+        .author {
+            color: gray;
+            font-weight: 400;
+            font-size: 11px;
+            padding-top: 20px;
+        }
+
+        .name {
+            font-weight: 600;
+        }
+
+        .name:hover {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top  ">
+    <!--大屏幕会展开，navbar-dark与bg-dark表示设置为黑底白字，fixed-top表示固定在最上方-->
+    <div class="container">
+        <a class="navbar-brand" href="#">燃煤之籍<!--导航栏logo栏-->
+            <img src="{%static 'imgg/img/gas.png'%}" class="img-fluid" alt="">
+        </a>
+
+        <!-- 折叠按钮，用于将导航菜单折叠起来 -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- 折叠的导航菜单 -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">基础数据管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">输差管理</a>
+                </li>
+                <!--下拉菜单样式定义-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        日常管理
+                    </a>
+                    <!-- 下拉菜单内容 -->
+                    <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">设备运维管理</a></li>
+                        <li><a class="dropdown-item" href="#">气量交接管理</a></li>
+                        <li><a class="dropdown-item" href="#">气损记录管理</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        数据查询分析
+                    </a>
+                    <!-- 下拉菜单内容 -->
+                    <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">销气数据</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">数据分析</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+                <a
+                        href="{% url 'home' %}"
+                        class="list-group-item list-group-item-action py-2 ripple "
+                        aria-current="true"
+                >
+                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>主页</span>
+                </a>
+                <a href="{% url 'Qp' %}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fas fa-chart-area fa-fw me-3"></i><span>购气总量Q<sub>p</sub></span>
+                </a>
+                <a href="{% url 'Qi' %}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fas fa-chart-line fa-fw me-3"></i><span>库存差Q<sub>i-t1</sub>-Q<sub>i-t2</sub></span>
+                </a>
+                <a href="{% url 'Qs' %}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fas fa-chart-bar fa-fw me-3"></i><span>总销气量Q<sub>s</sub></span>
+                </a>
+                <a href="{% url 'Qf' %}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa-solid fa-chart-gantt me-3"></i><span>自用气量Q<sub>f</sub></span>
+                </a>
+                <a href="{% url 'Qc' %}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa-solid fa-chart-column me-3"></i><span>索赔气量Q<sub>c</sub></span>
+                </a>
+                <a href="{% url 'Qd' %}" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fa-regular fa-chart-bar me-3"></i><span>放散气量Q<sub>d</sub></span>
+                </a>
+                <a href="{% url 'delta' %}" class="list-group-item list-group-item-action py-2 ripple active">
+                    <i class="fa-solid fa-chart-simple me-3"></i><span>购销差▲与购销差率μ</span>
+                </a>
+        </div>
+    </div>
+</nav>
+
+<section class="container-fluid">
+        <div class="row navbar-expand-md">
+            <div class="col-md-3 col-lg-2 ">
+                <!--nothing here-->
+            </div>
+            <div class="col-md-9 col-lg-10 mt-3 ">
+
+                <div class="d-flex">
+                    <div class="justify-content-center" id="jsmind_container"></div>
+                </div>
+                <section style="background-color: #87CEFA "class="p-5  text-dark text-center text-sm-start"><!--padding数字是默认一种尺寸-->
+                    <!--将图片与menu分割开来,文字始终居中，并且当分辨率显示大于small文字就靠左-->
+
+
+
+                        <h1 class="d-flex justify-content-center align-items-center">
+                            我们推荐的燃气购销差公式
+                        </h1>
+                        <div class="container d-flex justify-content-center align-items-center">
+                            <h3>
+                                Δ=Q<sub>p</sub>
+                                +（Q<sub>i-t1</sub>-Q<sub>i-t2</sub>）-Q<sub>s</sub>-Q<sub>f</sub>-Q<sub>c</sub>-Q<sub>d</sub>
+                            </h3>
+
+                        </div>
+                        <!--<button id="login-btn" class="btn btn-primary btn-lg">查看燃气数据</button>-->
+
+                            <!--<img src="imgg/img/showcase.svg" alt="showcase" class="w-50 d-none d-md-block">-->
+                            <!--width-50%--><!--右半部分的图片--><!--默认图片是不显示的，但如果显示大于medium就显示为block级-->
+
+
+                </section>
+                <!--card-->
+                <div class="d-flex">
+                    <div class="card mx-5">
+                        <!--<img src="/picture/parament1.jpg"  class="card-image">-->
+                        <img src="{%static 'imgg/img/parament1.jpg'%}"  class="card-image">
+                        <div class="category"> 简单上手</div>
+                        <div class="heading"> 我们的系统的界面设计简洁明了，易于理解，能够帮助用户快速上手
+                            <!--<div class="author"> By <span class="name">Abi</span> 4 days ago</div>-->
+                        </div>
+                    </div>
+                    <div class="card mx-5">
+                        <!--<img src="/picture/parament2.jpg" class="card-image">-->
+                        <img src="{%static 'imgg/img/parament2.jpg'%}"  class="card-image">
+                        <div class="category"> 数据准确</div>
+                        <div class="heading"> 系统采用了先进的计算模型和预测方法，能够对购销差进行精准计算和预测<!--。同时，该系统还能够对历史数据进行处理和分析，从而更好地帮助用户控制成本-->
+                           <!-- <div class="author"> By <span class="name">Abi</span> 4 days ago</div>-->
+                        </div>
+                    </div>
+                    <div class="card mx-5">
+                         <!--<img src="/picture/parament3.jpg" class="card-image">-->
+                        <img src="{%static 'imgg/img/parament3.jpg'%}"  class="card-image">
+                        <div class="category"> 功能直观</div>
+                        <div class="heading"> 系统界面设计简洁明了，易于理解
+                           <!-- <div class="author"> By <span class="name">Abi</span> 4 days ago</div>-->
+                        </div>
+                    </div>
+                    <div class="card mx-5">
+                         <!--<img src="/picture/parament4.jpg" class="card-image">-->
+                        <img src="{%static 'imgg/img/parament4.jpg'%}"  class="card-image">
+                        <div class="category"> 提高效率</div>
+                        <div class="heading"> <!--该系统能够帮助用户更好地管理燃气企业的购销差，从而提高效率-->通过对购销差计算模型与预测方法、历史数据处理流程进行分析，帮助用户更好地控制成本，提高效率
+                            <!--<div class="author"> By <span class="name">Abi</span> 4 days ago</div>-->
+                        </div>
+                    </div>
+                </div>
+                <footer class="p-5 bg-light text-dark text-center">
+                    <div class="container">
+                        <p class="lead">Copyright &copy;2023</p>
+                    </div>
+                </footer>
+
+
+            </div>
+        </div>
+</section>
+
+
+
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+
+</script>
+<script src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/jsmind/es6/jsmind.js"></script>
+        <script
+            type="text/javascript"
+            src="//cdn.jsdelivr.net/npm/jsmind/es6/jsmind.draggable-node.js"
+        ></script>
+        <script type="text/javascript">
+            function load_jsmind() {
+                var mind = {
+                    meta: {
+                        name: 'demo',
+                        author: '1394661877@qq.com',
+                        version: '0.1',
+                    },
+                    format: 'node_array',
+                    data: [
+                        { id: 'root', isroot: true, topic: 'Δ=Q<sub>p</sub> +（Q<sub>i-t1</sub>-Q<sub>i-t2</sub>）-Q<sub>s</sub>-Q<sub>f</sub>-Q<sub>c</sub>-Q<sub>d</sub>\n'/* +
+                                    '-Qf\n' +
+                                    '-Qc\n' +
+                                    '-Qd' */},
+
+                        {
+                            'id': 'sub1',
+                            'parentid': 'root',
+                            'topic': '<a style="text-decoration: none;" href="https://www.mi.com/">Q<sub>p</sub></a>',
+                            /*'background-color': '#0000ff',*/
+                        },
+                        { id: 'sub11', parentid: 'sub1', topic: 'Q<sub>p-png</sub> '},
+                        { id: 'sub12', parentid: 'sub1', topic: 'Q<sub>p-cng</sub>' },
+                        { id: 'sub13', parentid: 'sub1', topic: 'Q<sub>p-lng</sub>' },
+
+                        { id: 'sub2', parentid: 'root', topic: '<a style="text-decoration: none;" href="https://www.mi.com/">Q<sub>i-t1</sub></a>' },
+                        { id: 'sub21', parentid: 'sub2', topic: 'Q<sub>i-t1-png</sub>' },
+                        {
+                            'id': 'sub22',
+                            'parentid': 'sub2',
+                            'topic': 'Q<sub>i-t1-cng</sub>',
+                            /*'foreground-color': '#33ff33',*/
+                        },
+                            { id: 'sub23', parentid: 'sub2', topic: 'Q<sub>i-t1-lng</sub>' },
+                        { id: 'sub3', parentid: 'root', topic: '<a style="text-decoration: none;" href="https://www.mi.com/">Q<sub>i-t2</sub></a>' },
+                            { id: 'sub31', parentid: 'sub3', topic: 'Q<sub>i-t2-png</sub>' },
+                            { id: 'sub32', parentid: 'sub3', topic: 'Q<sub>i-t2-cng</sub>' },
+                            { id: 'sub33', parentid: 'sub3', topic: 'Q<sub>i-t2-lng</sub>' },
+                        { id: 'sub4', parentid: 'root', topic: '<a style="text-decoration: none;" href="https://www.mi.com/">Q<sub>s</sub></a>' },
+                            { id: 'sub41', parentid: 'sub4', topic: 'Q<sub>s-res</sub>' },
+                            { id: 'sub42', parentid: 'sub4', topic: 'Q<sub>s-ind</sub>' },
+                            { id: 'sub43', parentid: 'sub4', topic: 'Q<sub>s-com</sub>' },
+                            { id: 'sub44', parentid: 'sub4', topic: 'Q<sub>s-pwe</sub>' },
+                            { id: 'sub45', parentid: 'sub4', topic: 'Q<sub>s-hea</sub>' },
+                            { id: 'sub46', parentid: 'sub4', topic: 'Q<sub>s-ent</sub>' },
+                            { id: 'sub47', parentid: 'sub4', topic: 'Q<sub>s-els</sub>' },
+                        { id: 'sub5', parentid: 'root', topic: '<a style="text-decoration: none;" href="https://www.mi.com/">Q<sub>f</sub></a>' },
+                            { id: 'sub51', parentid: 'sub5', topic: 'Q<sub>f-pro</sub>' },
+                            { id: 'sub52', parentid: 'sub5', topic: 'Q<sub>f-lif</sub>' },
+                        { id: 'sub6', parentid: 'root', topic: '<a style="text-decoration: none;" href="https://www.mi.com/">Q<sub>c</sub></a>' },
+                            { id: 'sub61', parentid: 'sub6', topic: 'Q<sub>c-ill</sub>' },
+                            { id: 'sub62', parentid: 'sub6', topic: 'Q<sub>c-des</sub>' },
+                        { id: 'sub7', parentid: 'root', topic: '<a style="text-decoration: none;" href="https://www.mi.com/">Q<sub>d</sub></a>' },
+                            { id: 'sub71', parentid: 'sub7', topic: 'Q<sub>d-pro</sub>' },
+                            { id: 'sub72', parentid: 'sub7', topic: 'Q<sub>d-eng</sub>' },
+                    ],
+                };
+                var options = {
+                    container: 'jsmind_container',
+                    editable: false,
+                    theme: 'primary',/*颜色*/
+                    mode :'full',
+                    view: {
+                        engine: 'canvas',   // 思维导图各节点之间线条的绘制引擎
+                        hmargin: 100,        // 思维导图距容器外框的最小水平距离
+                        vmargin: 50,         // 思维导图距容器外框的最小垂直距离
+                        line_width: 2,       // 思维导图线条的粗细
+                        line_color: '#555',  // 思维导图线条的颜色
+                        draggable: false,   // 当容器不能完全容纳思维导图时，是否允许拖动画布代替鼠标滚动
+                        hide_scrollbars_when_draggable: false, // 当设置 draggable = true 时，是否隐藏滚动条
+                        node_overflow: 'wrap' // 节点文本过长时的样式
+                    },
+
+                };
+                var jm = jsMind.show(options, mind);
+                // jm.set_readonly(true);
+                // var mind_data = jm.get_data();
+                // alert(mind_data);
+                /*jm.add_node('sub2', 'sub23', 'new node', { 'background-color': 'red' });
+                jm.set_node_color('sub21', 'green', '#ccc');*/
+            }
+
+            load_jsmind();
+        </script>
+
+</body>
+</html>

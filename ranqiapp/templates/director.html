@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block content %}
+    <!--图片为背景的说明-->
+    <section class="p-5 bg-image">
+        <div class="container">
+            <div class="text-dark text-center ">
+                <h1>燃气购销差数据</h1>
+                <h3>通过可视化图标以及表格数据来详细了解燃气购销差</h3>
+                <button type="button" id="myButton" class="btn btn-primary btn-md mt-5">查看最新</button>
+            </div>
+        </div>
+    </section>
+    <section class=" p-5"><!--padding为5级-->
+        <div class="container">
+            <div class="row row-cols-md-2 row-cols-1 g-4"><!--当屏幕大于md时一行显示两张卡片，小于等于md时一行显示一张，g-4表示栅栏系统各行之间的间距-->
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="{% url 'user3' %}" class="text-decoration-none text-dark">
+                            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h4 class="card-text text-center">用户信息管理</h4>
+                            </div>
+                        </a>
+
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100"><!--height：100%-->
+                        <a href="{% url 'user2' %}" class="text-decoration-none text-dark">
+                            <!--取消文本下划线 并且a标签中的文字默认蓝色 需要text-dark重新变为黑色-->
+                            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h4 class="card-text text-center">气源信息管理</h4>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="{% url 'back' %}" class="text-decoration-none text-dark">
+                            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h4 class="card-text text-center">管网信息管理</h4>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="{% url 'user5' %}" class="text-decoration-none text-dark">
+                            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Card Image">
+                            <!--card-img-top表示图片在卡片上方-->
+                            <div class="card-body">
+                                <h4 class="card-text text-center">购销差专项工作管理</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block js %}
+{#    <script src="{% static 'js/bootstrap.bundle.min.js' %}"#}
+{#            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"#}
+{#            crossorigin=" anonymous" %}></script>#}
+    <script>
+        $(document).ready(function () {
+            $("#myButton").click(function () {
+                $('html, body').animate({
+                    scrollTop: "+=400px"
+                }, 'linear');
+            });
+        });
+
+    </script>
+{% endblock %}

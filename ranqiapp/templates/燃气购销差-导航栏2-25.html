@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>燃煤之籍</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="/static/css/style.css" />
+		<style>
+			.card {
+				width: 350px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+				margin: 10px;
+			}
+
+			.card-header {
+				background-color: #333;
+				padding: 16px;
+				text-align: center;
+			}
+
+			.card-header .text-header {
+				margin: 0;
+				font-size: 18px;
+				color: rgb(255, 255, 255);
+			}
+
+			.card-body {
+				padding: 16px;
+			}
+
+			.form-group {
+				margin-bottom: 10px;
+			}
+
+			.form-group label {
+				display: block;
+				font-size: 14px;
+				color: #333;
+				font-weight: bold;
+				margin-bottom: 1px;
+			}
+
+			.form-group input[type="text"],
+			.form-group input[type="email"],
+			.form-group input[type="password"] {
+				width: 100%;
+				padding: 8px;
+				font-size: 14px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+			}
+
+			.btn {
+				padding: 12px 24px;
+				margin-left: 13px;
+				font-size: 16px;
+				border: none;
+				border-radius: 4px;
+				background-color: #333;
+				color: #fff;
+				text-transform: uppercase;
+				transition: background-color 0.2s ease-in-out;
+				cursor: pointer
+			}
+
+			.btn:hover {
+				background-color: #ccc;
+				color: #333;
+			}
+		</style>
+    </head>
+    <body>
+        <!--导航栏部分-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top  "><!--大屏幕会展开，navbar-dark与bg-dark表示设置为黑底白字，fixed-top表示固定在最上方-->
+            <div class="container">
+                <a class="navbar-brand" href="#">燃煤之籍<!--导航栏logo栏-->
+					<img src="{%static 'imgg/gas.png' %}" class="img-fluid" alt="">
+				</a>
+
+                <!-- 折叠按钮，用于将导航菜单折叠起来 -->
+                <!--<button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                &lt;!&ndash; 折叠的导航菜单 &ndash;&gt;
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active"  aria-current="page" href="#">桌面</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link" href="#">基础数据管理</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">输差管理</a>
+                        </li>
+						&lt;!&ndash;下拉菜单样式定义&ndash;&gt;
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                日常管理
+                            </a>
+                            &lt;!&ndash; 下拉菜单内容 &ndash;&gt;
+                            <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">设备运维管理</a></li>
+                                <li><a class="dropdown-item" href="#">气量交接管理</a></li>
+                                <li><a class="dropdown-item" href="#">气损记录管理</a></li>
+                            </ul>
+                        </li>
+						                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                数据查询分析
+                            </a>
+                            &lt;!&ndash; 下拉菜单内容 &ndash;&gt;
+                            <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">销气数据</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">数据分析</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>-->
+            </div>
+        </nav>
+
+
+
+	<!--注册部分-->
+	<section class="p-5 bg-light text-dark"><!--内边距为第五档-->
+		<div class="container">
+			<div class="d-md-flex justify-content-between align-items-center">
+				<h3 class="mb-3">现在注册一个新的账号</h3>
+				<div class="input-group news-input"><!--newsinput为自己写的css-->
+					<input type="text" class="form-control" placeholder="请输入你的邮箱">
+					<button id="register-btn" class="btn btn-dark btn-lg">注册</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+		<!--注册框-->
+	<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="registerModalLabel">注册</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form action="{% url 'mainpage' %}" method="post">
+						{% csrf_token %}
+						<div class="form-group">
+							<label for="username">用户名:</label>
+							<input required="" class="form-control" name="username" id="username" type="text">
+						</div>
+						<div class="form-group">
+							<label for="email">邮箱:</label>
+							<input required="" class="form-control" name="email" id="email" type="email">
+						</div>
+						<div class="form-group">
+							<label for="password">密码:</label>
+							<input required="" class="form-control" name="password" id="password" type="password">
+						</div>
+						<div class="form-group">
+							<label for="confirm-password">确认密码:</label>
+							<input required="" class="form-control" name="confirm-password" id="confirm-password" type="password">
+						</div>
+						<input type="submit" class="btn" value="提交">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!--简介说明部分-->
+    <section class="p-5 bg-dark text-light text-center text-sm-start" ><!--padding数字是默认一种尺寸--><!--将图片与menu分割开来,文字始终居中，并且当分辨率显示大于small文字就靠左-->
+		<div class="container"><!--默认容器 响应式 可以根据分辨率不同调整样式-->
+			<div class="d-flex"><!--display flex--><!--一种新的布局方式 平行与float布局-->
+				<div>
+					<h1>
+						如果已经注册了账号
+					</h1>
+					<p class="my-4"><!--margin top margin bottom,y是纵轴-->
+						注册了账号后，您可以进一步查询我们的燃气购销差管理系统。该系统为您提供了丰富的功能和工具，以帮助您更好地了解和管理燃气购销差。通过该系统，您可以查看历史数据和趋势，进行数据分析和建模，并使用机器学习算法预测未来的购销差趋势。此外，该系统还提供了可视化分析工具，帮助您更好地理解数据，并支持自定义报告和数据导出。我们的燃气购销差管理系统是一个完整、可靠和易于使用的平台，旨在帮助您优化您的燃气采购和销售策略，并最大化您的盈利能力
+					</p>
+					<button id="login-btn" class="btn btn-primary btn-lg">登录</button>
+				</div>
+				<img src="{%static 'imgg/showcase.svg'%}" alt="showcase" class="w-50 d-none d-md-block"><!--width-50%--><!--右半部分的图片--><!--默认图片是不显示的，但如果显示大于medium就显示为block级-->
+			</div>
+		</div>
+	</section>
+
+	<!--登录界面-->
+	<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="loginModalLabel">登录</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form action="/afterlogin/" method="post">
+						{% csrf_token %}
+						<div class="form-group">
+							<label for="username">用户名:</label>
+							<input required="" class="form-control" name="username1"  type="text">
+						</div>
+						<div class="form-group">
+							<label for="password">密码:</label>
+							<input required="" class="form-control" name="password1"  type="password">
+						</div>
+						<input type="submit" class="btn" value="登录">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<section class="p-5">
+		<div class="container">
+			<div class="row g-4"><!--bootstrap的网格系统,g为gap，-->
+				<div class="col-md"><!--在row中的col都是在一行的，呈现col横向排列-->
+					<div class="card bg-dark text-light">
+						<div class="card-body text-center">
+							<div class="card-title ">
+								数据处理
+							</div>
+							<div class="card-text">
+								燃气购销差管理过程中，数据收集和处理是至关重要的环节。燃气公司需要及时收集和处理大量的供应链、市场和财务数据，以帮助其更好地了解燃气市场的变化和趋势，并及时调整其采购和销售策略。
+							</div>
+							<a href="#" class="btn btn-primary mt-2"><!--margin top-->
+								查看更多
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="card bg-secondary text-light">
+						<div class="card-body text-center">
+							<div class="card-title ">
+								市场因素
+							</div>
+							<div class="card-text">
+								燃气公司需要根据市场情况和内部因素制定合理的采购和销售策略，以优化其购销差管理。在制定策略时，燃气公司需要考虑市场供求关系、价格趋势、成本和风险等因素，以支持决策的制定和实施。
+							</div>
+							<a href="#" class="btn btn-dark mt-2">
+								查看更多
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="card bg-dark text-light">
+						<div class="card-body text-center">
+							<div class="card-title ">
+								数据安全
+							</div>
+							<div class="card-text">
+								燃气购销差管理还需要遵守相关法律和规定，确保其合法性和公正性。在数据管理和处理方面，燃气公司需要遵守数据隐私和安全的相关要求，以保护客户和公司的数据安全。
+							</div>
+							<a href="#" class="btn btn-primary mt-2">
+								查看更多
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section class="p-5 bg-light ">
+		<div class="container ">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-md">
+					<img src="{%static 'imgg/gas2.jpg'%}" alt="1" class="img-fluid rounded">
+				</div>
+				<div class="col-md p-5">
+					<h2>关于燃气购销差</h2>
+					<p class="lead"><!--lead是font-size1.25rem;font-weight:300-->
+						燃气购销差是指燃气公司采购天然气的成本和销售天然气的价格之间的差距。燃气购销差通常是由于市场波动、供求关系和其他因素导致的。燃气购销差的大小对燃气公司的盈利能力和市场地位有着重要的影响。
+					</p>
+					<a href="#" class="btn btn-light">查看更多</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="p-5 bg-dark text-light">
+		<div class="container">
+			<div class="row align-items-center justify-content-between">
+
+				<div class="col-md ">
+					<h2>关于机器学习</h2>
+					<p class="lead"><!--lead是font-size1.25rem;font-weight:300-->
+						机器学习算法可以在燃气购销差方面发挥积极的作用。通过对历史数据进行分析和建模，可以使用机器学习算法预测未来的燃气购销差趋势。这样，燃气公司可以及时调整其采购和销售策略，以最大化其利润。此外，机器学习算法还可以帮助燃气公司发现隐藏在数据中的模式和趋势，从而提高燃气购销差的预测精度和准确性。综上所述，机器学习算法为燃气公司提供了一种有效的工具，以优化其采购和销售策略，并提高其盈利能力。
+					</p>
+					<a href="#" class="btn btn-light">查看更多</a>
+				</div>
+				<div class="col-md p-5">
+					<img src="{%static 'imgg/gas_station.jpg'%}" alt="1" class="img-fluid rounded">
+				</div>
+			</div>
+		</div>
+	</section>
+
+		<section class="p-5">
+			<div class="container">
+				<h2 class="text-center">
+					常见问题
+				</h2>
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item"><!--flush组件-->
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#flush-collapseOne" aria-expanded="false"
+									aria-controls="flush-collapseOne">
+								Accordion Item #1
+							</button>
+						</h2>
+						<div id="flush-collapseOne" class="accordion-collapse collapse"
+							 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">Placeholder content for this accordion, which is intended to
+								demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion
+								body.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#flush-collapseTwo" aria-expanded="false"
+									aria-controls="flush-collapseTwo">
+								Accordion Item #2
+							</button>
+						</h2>
+						<div id="flush-collapseTwo" class="accordion-collapse collapse"
+							 aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">Placeholder content for this accordion, which is intended to
+								demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion
+								body. Let's imagine this being filled with some actual content.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#flush-collapseThree" aria-expanded="false"
+									aria-controls="flush-collapseThree">
+								Accordion Item #3
+							</button>
+						</h2>
+						<div id="flush-collapseThree" class="accordion-collapse collapse"
+							 aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">Placeholder content for this accordion, which is intended to
+								demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion
+								body. Nothing more exciting happening here in terms of content, but just filling up the
+								space to make it look, at least at first glance, a bit more representative of how this
+								would look in a real-world application.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+	<section class="p-5">
+		<div class="container">
+			<h2 class="text-center mb-4">
+				联系我们
+			</h2>
+			<ul class="list-group"><!--listgroup组件-->
+  				<li class="list-group-item">电话：xxxxxxxx</li>
+  				<li class="list-group-item">邮箱：xxxx@mail.ecust.edu.cn</li>
+  				<li class="list-group-item">地址:上海市奉贤区海思路999号</li>
+
+			</ul>
+		</div>
+	</section>
+
+	<footer class="p-5 bg-dark text-white text-center">
+		<div class="container">
+			<p class="lead">Copyright &copy;2023</p>
+		</div>
+	</footer>
+
+
+
+
+
+
+
+		<script src="/static/js/jquery.js"></script>
+		<script>
+			$(document).ready(function () {
+				// 监听注册按钮的点击事件
+				$("#register-btn").click(function () {
+					// 显示模态框
+					$('#registerModal').modal('show');
+					// 调整背景透明度
+					$('body').css('opacity', '0.5');
+				});
+				// 监听模态框关闭事件
+				$('#registerModal').on('hidden.bs.modal', function () {
+					// 恢复背景透明度
+					$('body').css('opacity', '1');
+				});
+			});
+		</script>
+
+		<script>
+			$(document).ready(function () {
+				// 监听注册按钮的点击事件
+				$("#login-btn").click(function () {
+					// 显示模态框
+					$('#loginModal').modal('show');
+					// 调整背景透明度
+					$('body').css('opacity', '0.5');
+				});
+				// 监听模态框关闭事件
+				$('#loginModal').on('hidden.bs.modal', function () {
+					// 恢复背景透明度
+					$('body').css('opacity', '1');
+				});
+			});
+		</script>
+
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

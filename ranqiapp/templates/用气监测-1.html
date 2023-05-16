@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>用气监测-1</title>
+        <link rel="stylesheet" href="/static/css/用气监测-1.css">
+    </head>
+    <body>
+        <script src="/static/js/flexible.js"></script>
+        <header>
+            <div class="logo"></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="{% url 'overall' %}" target="_self"><button class="button2">总体概览</button></a></li>
+                    <li><a href="{% url 'calculation' %}" target="_self"><button class="button2">表具计量</button></a></li>
+                    <li><a href="{% url 'supervision' %}" target="_self"><button class="button2">用气监测</button></a></li>
+                    <li><a href="{% url 'leakage' %}" target="_self"><button class="button2">泄漏预测</button></a></li>
+                    <li><a href="{% url 'pipe' %}" target="_self"><button class="button2">管容变化</button></a></li>
+                    <li><a href="{% url 'temp' %}" target="_self"><button class="button2">温压补偿</button></a></li>
+                </ul>
+            </div>
+            <div class="showTime">当前时间</div>
+            <script>
+               var t=null;
+               t=setTimeout(time,1000);//开始运行
+               function time(){
+                 clearTimeout(t);//清除定时器
+                 dt=new Date();
+                 var y=dt.getFullYear();
+                 var mt=dt.getMonth()+1;
+                 var day=dt.getDate();
+                 var h=dt.getHours();
+                 var m=dt.getMinutes();
+                 var s=dt.getSeconds();
+                 document.querySelector(".showTime").innerHTML=
+                  y+"年"+mt+"月"+day+"日     "+h+":"+m+":"+s;
+                 t=setTimeout(time,1000);//设置定时器，循环运行
+               }
+            </script>
+        </header>
+
+        <!-- 页面主体部分 -->
+        <section class="mainbox">
+            <div class="column1">
+                <div class="box7">
+                    <div class="select">
+                        <a href="{% url 'supervision' %}"><input type="button" onclick="window.location.href('连接')" value="Page 1"/></a>
+		                <a href="{% url 'supervision2' %}"><input type="button" onclick="window.location.href('连接')" value="Page 2"/></a>
+                    </div>
+                </div>
+                    <div class="bigbox">
+                        <div class="box1">
+                            <div class="pic">
+                            <div class="pie1">
+                                <div class="chart"></div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="box2">
+                            <div class="pic">
+                            <div class="pie2">
+                                <div class="chart"></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box3">
+                        <div class="mbox1">
+                            <div class="pic">
+                                <div class="bar1">
+                                    <div class="chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mbox2">
+                            <div class="pic">
+                                <div class="line1">
+                                    <div class="chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mbox3">
+                            <div class="word">
+                                <p1>非正常计量</p1><br>
+                                <p2>各区域营业所补收量及损失率</p2>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="column2">
+                <div class="box4"></div>
+            </div>
+            <div class="column3">
+                <div class="box5">
+                    <div class="title">
+                        <p>非正常计量用户处理数量</p>
+                    </div>
+                    <div class="pic">
+                        <div class="bar2">
+                            <div class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box6">
+                    <div class="mbox4">
+                        <div class="word">
+                            <p>降低购销差量</p>
+                        </div>
+                    </div>
+                    <div class="mbox5">
+                        <div class="pic">
+                                <table>
+                                    <tr>
+                                        <th>第一营业所</th>
+                                        <th>18m²</th>
+                                    </tr>
+                                    <tr>
+                                        <th>第二营业所</th>
+                                        <th>12m²</th>
+                                    </tr>
+                                    <tr>
+                                        <th>第三营业所</th>
+                                        <th>28m²</th>
+                                    </tr>
+                                    <tr>
+                                        <th>第四营业所</th>
+                                        <th>30m²</th>
+                                    </tr>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box8">
+                <div class="b1"></div>
+                <div class="b2"></div>
+                <div class="b3"></div>
+                <div class="b4"></div>
+                <div class="b5"></div>
+            </div>
+        </section>
+        <script src="/static/js/flexible.js"></script>
+        <script src="/static/js/echarts_min.js"></script>
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/用气监测-1.js"></script>
+    </body>
+</html>

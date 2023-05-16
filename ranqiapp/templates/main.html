@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>主页面</title>
+<!--        <link rel="stylesheet" href="/static/css/main.css">-->
+    </head>
+    <body>
+        <script src="/static/js/flexible.js"></script>
+
+        <header>
+            <h1>燃气购销差管理平台</h1>
+            <div class="showTime">当前时间</div>
+            <script>
+               var t=null;
+               t=setTimeout(time,1000);//开始运行
+               function time(){
+                 clearTimeout(t);//清除定时器
+                 dt=new Date();
+                 var y=dt.getFullYear();
+                 var mt=dt.getMonth()+1;
+                 var day=dt.getDate();
+                 var h=dt.getHours();
+                 var m=dt.getMinutes();
+                 var s=dt.getSeconds();
+                 document.querySelector(".showTime").innerHTML=
+                  y+"年"+mt+"月"+day+"日     "+h+":"+m+":"+s;
+                 t=setTimeout(time,1000);//设置定时器，循环运行
+               }
+            </script>
+        </header>
+
+        <!-- 页面主体部分 -->
+<!--        <section class="mainbox">-->
+<!--            <div class="column1">-->
+<!--                <div class="box1">-->
+<!--                    <ul>-->
+<!--                        <li><h1>总体概览</h1></li>-->
+<!--                        <li><a href="{% url 'overall' %}" target="_blank"><button>Outline</button></a></li>-->
+<!--                        <li>数据一号闪亮亮<br><h2>123</h2>ml</li>-->
+<!--                        <li>数据二号闪亮亮<br><h2>123</h2>ml</li>-->
+<!--                        <li>数据三号闪亮亮<br><h2>123</h2>ml</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <div class="empty"></div>-->
+<!--                <div class="box2">-->
+<!--                    <p>通过增量训练和学习方法、多任务迁移学习方法，智能挖掘燃气购销差数据，梳理购销差成因以及成因在购销差中的权重，构建燃气购销差模型。<br>将燃气购销差数据进行多维度综合统计分析，生成可视化展示平台，为燃气企业的购销差管理工作提供详细的数据支撑。</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="column2">-->
+<!--                <div class="bigbox">-->
+<!--                <div class="box3">-->
+<!--                    <div class="title">-->
+<!--                        <a href="{% url 'calculation' %}" target="_blank">表具计量</a>-->
+<!--                    </div>-->
+<!--                    <div class="word">-->
+<!--                        <p1>结合大于</p1><br><p2>10 </p2><p3>年用气数据</p3><br>-->
+<!--                        <p4>使用</p4><br><p5>超龄表损失算法</p5><br><p6>估算误差</p6>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="box4">-->
+<!--                    <div class="title">-->
+<!--                        <a href="{% url 'supervision' %}" target="_blank">用气监测</a>-->
+<!--                    </div>-->
+<!--                    <div class="pic">-->
+<!--                        <div class="bar">-->
+<!--                            <div class="chart"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="box5">-->
+<!--                    <div class="title">-->
+<!--                        <a href="{% url 'leakage' %}" target="_blank">泄漏预测</a>-->
+<!--                    </div>-->
+<!--                    <div class="word">-->
+<!--                        <p1>泄露总量采样周期</p1><br>-->
+<!--                        <p2>1 </p2><p3>年</p3><br>-->
+<!--                        <p4>利用</p4><br>-->
+<!--                        <p5>泄露算法</p5><br>-->
+<!--                        <p6>进行预测</p6>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--                <div class="box6">-->
+<!--                    <div class="title">-->
+<!--                        <a href="{% url 'pipe' %}" target="_blank">管容变化</a>-->
+<!--                    </div>-->
+<!--                    <div class="pic">-->
+<!--                        <div class="tb1">-->
+<!--                            <table>-->
+<!--                                <tr>-->
+<!--                                    <th>数据1</th>-->
+<!--                                    <th>数据2</th>-->
+<!--                                    <th>数据3</th>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>666</td>-->
+<!--                                    <td>576</td>-->
+<!--                                    <td>1234.6</td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                        <div class="tb2">-->
+<!--                            <table>-->
+<!--                                <tr>-->
+<!--                                    <th>数据4</th>-->
+<!--                                    <th>数据5</th>-->
+<!--                                    <th>数据6</th>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>888</td>-->
+<!--                                    <td>1235</td>-->
+<!--                                    <td>1234.6</td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="box7">-->
+<!--                    <div class="title">-->
+<!--                        <a href="{% url 'temp' %}" target="_blank">温压补偿</a>-->
+<!--                    </div>-->
+<!--                    <div class="pic">-->
+<!--                        <div class="line1">-->
+<!--                            <div class="chart"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+        <script src="/static/js/flexible.js"></script>
+        <script src="/static/js/echarts_min.js"></script>
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/main.js"></script>
+    </body>
+</html>

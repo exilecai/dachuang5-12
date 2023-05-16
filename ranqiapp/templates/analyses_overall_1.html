@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/analyses_overall_1.css' %}">
+</head>
+<body>
+<header>
+    <div class="logo"></div>
+    <div class="nav">
+        <ul>
+            <li><a href="/analyses/overall/1/" target="_self">
+                <button class="button2">总体概览</button>
+            </a></li>
+            <li><a href="/analyses/meter/1/" target="_self">
+                <button class="button2">表具计量</button>
+            </a></li>
+            <li><a href="{% url 'supervision' %}" target="_self">
+                <button class="button2">用气监测</button>
+            </a></li>
+            <li><a href="{% url 'leakage' %}" target="_self">
+                <button class="button2">泄漏预测</button>
+            </a></li>
+            <li><a href="{% url 'pipe' %}" target="_self">
+                <button class="button2">管容变化</button>
+            </a></li>
+            <li><a href="{% url 'temp' %}" target="_self">
+                <button class="button2">温压补偿</button>
+            </a></li>
+            <li><a href="/director/" target="_self">
+                <button class="button2">返回导航</button>
+            </a></li>
+        </ul>
+    </div>
+    <div class="showTime">当前时间</div>
+
+</header>
+
+<!-- 页面主体部分 -->
+<section class="mainbox">
+    <div class="column1">
+        <div class="box1">
+            <div class="title">
+                <p>当年购销差成分分布</p>
+            </div>
+            <div class="pic">
+                <div class="pie1">
+                    <div class="chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box2">
+            <div class="list">
+                <table>
+                    <tr>
+                        <th>组成成分</th>
+                        <th>购销差率%</th>
+                        <th>同比变化%</th>
+                    </tr>
+                    <tr>
+                        <td align="center">温压补偿</td>
+                        <td align="center">1</td>
+                        <td align="center">0.2</td>
+                    </tr>
+                    <tr>
+                        <td align="center">超龄表损失</td>
+                        <td align="center">2</td>
+                        <td align="center">0.2</td>
+                    </tr>
+                    <tr>
+                        <td align="center">非正常计量</td>
+                        <td align="center">1</td>
+                        <td align="center">0.2</td>
+                    </tr>
+                    <tr>
+                        <td align="center">泄露损失</td>
+                        <td align="center">2</td>
+                        <td align="center">0.2</td>
+                    </tr>
+                    <tr>
+                        <td align="center">管容变化</td>
+                        <td align="center">1</td>
+                        <td align="center">0.2</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="column2"></div>
+    <div class="column3">
+        <div class="box3">
+            <div class="select">
+                <a href="/analyses/overall/1/"><input type="button" onclick="window.location.href('连接')"
+                                                      value="Page 1"/></a>
+                <a href="/analyses/overall/2/"><input type="button" onclick="window.location.href('连接')"
+                                                      value="Page 2"/></a>
+            </div>
+        </div>
+        <div class="box4">
+            <div class="title">
+                <p>短期用气量预测</p>
+            </div>
+            <div class="pic">
+                <div class="line1">
+                    <div class="chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box5">
+            <div class="title">
+                <p>长期用气量预测</p>
+            </div>
+            <div class="pic">
+                <div class="line2">
+                    <div class="chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{% static 'js/flexible.js' %}"></script>
+<script src="{% static 'js/echarts_min.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/analyses_overall_1.js' %}"></script>
+<script>
+    var t = null;
+    t = setTimeout(time, 1000);//开始运行
+    function time() {
+        clearTimeout(t);//清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours();
+        var m = dt.getMinutes();
+        var s = dt.getSeconds();
+        document.querySelector(".showTime").innerHTML =
+            y + "年" + mt + "月" + day + "日     " + h + ":" + m + ":" + s;
+        t = setTimeout(time, 1000);//设置定时器，循环运行
+    }
+</script>
+</body>
+</html>

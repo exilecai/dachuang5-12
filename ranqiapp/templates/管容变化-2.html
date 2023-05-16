@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>管容变化-2</title>
+        <link rel="stylesheet" href="/static/css/管容变化-2.css">
+    </head>
+    <body>
+        <script src="/static/js/flexible.js"></script>
+        <header>
+            <div class="logo"></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="{% url 'overall' %}" target="_self"><button class="button2">总体概览</button></a></li>
+                    <li><a href="{% url 'calculation' %}" target="_self"><button class="button2">表具计量</button></a></li>
+                    <li><a href="{% url 'supervision' %}" target="_self"><button class="button2">用气监测</button></a></li>
+                    <li><a href="{% url 'leakage' %}" target="_self"><button class="button2">泄漏预测</button></a></li>
+                    <li><a href="{% url 'pipe' %}" target="_self"><button class="button2">管容变化</button></a></li>
+                    <li><a href="{% url 'temp' %}" target="_self"><button class="button2">温压补偿</button></a></li>
+                </ul>
+            </div>
+            <div class="showTime">当前时间</div>
+            <script>
+               var t=null;
+               t=setTimeout(time,1000);//开始运行
+               function time(){
+                 clearTimeout(t);//清除定时器
+                 dt=new Date();
+                 var y=dt.getFullYear();
+                 var mt=dt.getMonth()+1;
+                 var day=dt.getDate();
+                 var h=dt.getHours();
+                 var m=dt.getMinutes();
+                 var s=dt.getSeconds();
+                 document.querySelector(".showTime").innerHTML=
+                  y+"年"+mt+"月"+day+"日     "+h+":"+m+":"+s;
+                 t=setTimeout(time,1000);//设置定时器，循环运行
+               }
+            </script>
+        </header>
+
+        <!-- 页面主体部分 -->
+        <section class="mainbox">
+            <div class="column1">
+                <div class="box1">
+                    <div class="title">
+                        <p>管容变化总损失量及占比趋势</p>
+                    </div>
+                    <div class="pic">
+                        <div class="bar1">
+                            <div class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box2">
+                    <div class="word">
+                        <p1>采样周期</p1><br><p2>1 </p2><p3>年</p3><br><p4>为后续计算工作</p4><br><p5>收集相关数据</p5>
+                    </div>
+                </div>
+                <div class="box3">
+                    <div class="word">
+                        <p1>根据</p1><br><p2>管道标识码</p2><br><p3>与 </p3><p4>用气总量表</p4><br><p5>关联</p5>
+                    </div>
+                </div>
+                <div class="box4">
+                    <div class="word">
+                        <p1>将数据进行分类后</p1><br><p2>用于计算</p2><br><p3>放散损失气量</p3><br><p4>与 </p4><p5>置换损失气量</p5>
+                    </div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class="box5">
+                    <div class="word"></div>
+                    <div class="select">
+                        <a href="{% url 'pipe' %}" target="_self">
+                            <button1>
+                                <span class="span-mother">
+                                    <span>B</span>
+                                    <span>u</span>
+                                    <span>t</span>
+                                    <span>t</span>
+                                    <span>o</span>
+                                    <span>n</span>
+                                </span>
+                                <span class="span-mother2">
+                                    <span>B</span>
+                                    <span>u</span>
+                                    <span>t</span>
+                                    <span>t</span>
+                                    <span>o</span>
+                                    <span>n</span>
+                                </span>
+                              </button1>
+                            </a>
+                    </div>
+                </div>
+                <div class="box6">
+                    <div class="title">
+                        <p>管容变化损失气量</p>
+                    </div>
+                    <div class="pic">
+                        <div class="bar2">
+                            <div class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box7">
+                    <div class="title">
+                        <p>工程损耗总损失量及占比趋势</p>
+                    </div>
+                    <div class="pic">
+                        <div class="bar3">
+                            <div class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="/static/js/flexible.js"></script>
+        <script src="/static/js/echarts_min.js"></script>
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/管容变化-2.js"></script>
+    </body>
+</html>

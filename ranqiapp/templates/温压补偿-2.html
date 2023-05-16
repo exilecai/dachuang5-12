@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>温压补偿-2</title>
+        <link rel="stylesheet" href="/static/css/温压补偿-2.css">
+    </head>
+    <body>
+        <script src="/static/js/flexible.js"></script>
+        <header>
+            <div class="logo"></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="{% url 'overall' %}" target="_self"><button class="button2">总体概览</button></a></li>
+                    <li><a href="{% url 'calculation' %}" target="_self"><button class="button2">表具计量</button></a></li>
+                    <li><a href="{% url 'supervision' %}" target="_self"><button class="button2">用气监测</button></a></li>
+                    <li><a href="{% url 'leakage' %}" target="_self"><button class="button2">泄漏预测</button></a></li>
+                    <li><a href="{% url 'pipe' %}" target="_self"><button class="button2">管容变化</button></a></li>
+                    <li><a href="{% url 'temp' %}" target="_self"><button class="button2">温压补偿</button></a></li>
+                </ul>
+            </div>
+            <div class="showTime">当前时间</div>
+            <script>
+               var t=null;
+               t=setTimeout(time,1000);//开始运行
+               function time(){
+                 clearTimeout(t);//清除定时器
+                 dt=new Date();
+                 var y=dt.getFullYear();
+                 var mt=dt.getMonth()+1;
+                 var day=dt.getDate();
+                 var h=dt.getHours();
+                 var m=dt.getMinutes();
+                 var s=dt.getSeconds();
+                 document.querySelector(".showTime").innerHTML=
+                  y+"年"+mt+"月"+day+"日     "+h+":"+m+":"+s;
+                 t=setTimeout(time,1000);//设置定时器，循环运行
+               }
+            </script>
+        </header>
+
+        <!-- 页面主体部分 -->
+        <section class="mainbox">
+            <div class="column1">
+                <div class="box1">
+                    <div class="word"></div>
+                    <div class="select">
+                        <a href="{% url 'temp' %}" target="_self">
+                        <button1>
+                            <span class="span-mother">
+                                <span>B</span>
+                                <span>u</span>
+                                <span>t</span>
+                                <span>t</span>
+                                <span>o</span>
+                                <span>n</span>
+                            </span>
+                            <span class="span-mother2">
+                                <span>B</span>
+                                <span>u</span>
+                                <span>t</span>
+                                <span>t</span>
+                                <span>o</span>
+                                <span>n</span>
+                            </span>
+                          </button1>
+                        </a>
+                    </div>
+                </div>
+                <div class="box2">
+                    <div class="title">
+                        <p>温压补偿损失量</p>
+                    </div>
+                    <div class="pic">
+                        <div class="bar1">
+                            <div class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box3">
+                    <div class="pic">
+                        <div class="line1">
+                            <div class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class="box4">
+                    <div class="word">
+                        <p1>温度</p1><br><p2>与 </p2><p3>压力</p3><br><p4>对气体体积</p4><br><p5>产生了双重影响</p5>
+                    </div>
+                </div>
+                <div class="box5">
+                    <div class="word">
+                        <p1>导致</p1><br><p2>购气状态</p2><br><p3>与 </p3><p4>供气状态</p4><br><p5>产生了不同</p5>
+                    </div>
+                </div>
+                <div class="box6">
+                    <div class="word">
+                        <p1>造成</p1><br><p2>天然气体积的</p2><br><p3>计量误差</p3><br><p4>加以记录</p4>
+                    </div>
+                </div>
+                <div class="box7">
+                    <div class="title">
+                        <p>居民用气量占总用气量比例</p>
+                    </div>
+                    <div class="pic">
+                        <div class="line2">
+                            <div class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box8">
+                    <div class="word">
+                        <p>通过外网数据得到日气温与日气压，代入计算公式可得到用户日用气量，再乘以损失系数计算求出日温压补偿损失量，按区域分类。</p>
+                    </div>
+                </div>
+                <div class="box9">
+                    <div class="title">
+                        <p>表具组成情况</p>
+                    </div>
+                    <div class="pic">
+                        <div class="pie1">
+                            <div class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="/static/js/flexible.js"></script>
+        <script src="/static/js/echarts_min.js"></script>
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/温压补偿-2.js"></script>
+    </body>
+</html>

@@ -1,0 +1,395 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/daily.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <!--使用box-icon这个icon库-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+{% endblock %}
+{% block content %}
+    <!--头部导航栏-->
+    <header class="header" id="header" style="margin-top: 50px">
+        <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i>
+            每日购气量
+        </div>
+    </header>
+    <!--侧边导航栏-->
+    <div class="l-navbar" id="nav-bar" style="margin-top: 50px">
+        <nav class="nav">
+            <div><a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon' style="color: #dddddd"></i> <span
+                    class="nav_logo-name">燃煤之籍</span>
+            </a>
+                <div class="nav_list">
+                    <a href="/buy/" class="nav_link  nav-link active" style="display: inline-block;white-space: nowrap"
+                       aria-expanded="false">
+                        <i class='bx bx-shopping-bag mx-2' style="color: #dddddd"></i>
+                        <span class="nav_name mx-1" style="color: #dddddd">每日购气量</span>
+                    </a>
+                    <a href="/store/" class="nav_link  nav-link  " style="display: inline-block;white-space: nowrap"
+                       aria-expanded="false">
+                        <i class='bx bx-home-alt-2 mx-2' style="color: #dddddd"></i>
+                        <span class="nav_name mx-1" style="color: #dddddd">每日库存量</span>
+                    </a>
+                    <a href="/sell/" class="nav_link  nav-link " style="display: inline-block;white-space: nowrap"
+                       aria-expanded="false">
+                        <i class='bx bx-briefcase-alt-2 mx-2' style="color: #dddddd"></i>
+                        <span class="nav_name mx-1" style="color: #dddddd">每日销气量</span>
+                    </a>
+                    <a href="/use/" class="nav_link  nav-link " style="display: inline-block;white-space: nowrap"
+                       aria-expanded="false">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon mx-1' style="color: #dddddd"> </i>
+                        <span class="nav_name mx-1" style="color: #dddddd">每日自用气量</span>
+                    </a>
+                    <a href="/compensate/" class="nav_link  nav-link  "
+                       style="display: inline-block;white-space: nowrap"
+                       aria-expanded="false">
+                        <i class='bx bx-task nav_icon mx-1' style="color: #dddddd"> </i>
+                        <span class="nav_name mx-1" style="color: #dddddd">每日索赔气量</span>
+                    </a>
+                    <a href="/diffuse/" class="nav_link  nav-link  "
+                       style="display: inline-block;white-space: nowrap"
+                       aria-expanded="false">
+                        <i class='bx bxs-report nav_icon mx-1' style="color: #dddddd"> </i>
+                        <span class="nav_name mx-1" style="color: #dddddd">每日放散气量</span>
+                    </a>
+
+                </div>
+            </div>
+            <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon' style="color: #dddddd"></i> <span
+                    class="nav_name" style="color: #dddddd">退出</span> </a>
+        </nav>
+    </div>
+    <!--右侧部分-->
+    <section class="container-fluid">
+        <div class="row  navbar-expand-md" style="margin-top: 50px">
+            <div>
+                <div class="d-flex" style="margin-top: 5px">
+                    <form method="get" class="form-inline">
+                        <div class="form-group">
+                            <span class="ms-3 mt-3">起始时间：</span>
+                        </div>
+                        <div class="form-group" style="margin-left: 1px">
+                            <div class="input-group">
+                                <div class="ms-3 mt-2">
+                                    <input class="form-control " type="date" name="start" value="{{ start }}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="ms-3 mt-3" style="margin-left: auto">结束时间：</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="ms-3 mt-2">
+                                    <input class="form-control" type="date" name="end" value="{{ end }}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="ms-3 mt-3">购气量：</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="ms-1 mt-2">
+                                    <input class="form-control" name="amount" value="{{ amount }}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="ms-3 mt-3">购气类型：</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="ms-3 mt-2">
+                                    <select class="form-select" name="type" id="typeSelect">
+                                        <option value="1">所有</option>
+                                        <option value="2">CNG</option>
+                                        <option value="3">LNG</option>
+                                        <option value="4">管输</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="ms-3 mt-3">购气价格：</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="ms-1 mt-2">
+                                    <input class="form-control" name="price" value="{{ price }}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group-append ms-3 mt-2">
+                                <button class=" my-button " type="submit">搜索</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="input-group-append ms-3 mt-2">
+                        <button class=" my-button1 " id="tianjia" data-bs-toggle="modal"
+                                data-bs-target="#addModal">添加
+                        </button>
+                    </div>
+
+                    <!--<div class="input-group-append ms-3 mt-2">
+                        <button type="button" class="btn btn-secondary btn-danger">重置</button>
+                    </div>-->
+                </div>
+                <table class="table table-bordered" style="margin-top: 5px">
+                    <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>购气量</th>
+                        <th>购气类型</th>
+                        <th>购气单位</th>
+                        <th>购气价格</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for obj in queryset %}
+                        <tr uid="{{ obj.id }}">
+                            <td>{{ obj.date }}</td>
+                            <td>{{ obj.amount }}</td>
+                            <td>{{ obj.get_type_display }}</td>
+                            <td>{{ obj.unit }}</td>
+                            <td>{{ obj.price }}</td>
+                            <td>
+                                <input uid="{{ obj.id }}" class="btn btn-danger btn-xs btn-delete" type="button"
+                                       value="删除">
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <!--<div>
+                    <button class="my-button2" id="quanxuan">
+                        <span data-feather="check"></span>
+                        <span>全选</span>
+                    </button>
+                    <button class="my-button1" id="tianjia" data-bs-toggle="modal"
+                                        data-bs-target="#addModal">
+                        <span data-feather="plus"></span>
+                        <span>添加</span>
+                    </button>
+                    <button class="my-button3" id="quanshan">
+                        <span data-feather="trash-2"></span>
+                        <span>批量删除</span>
+                    </button>
+                </div>-->
+            </div>
+
+        </div>
+        <ul class="pagination" style="position: relative;left: 30%;float: left">
+            {{ page_string }}
+        </ul>
+        <div style="margin-top: 100px">
+        </div>
+    </section>
+
+    <!--模态栏-->
+    <!--edit-->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">修改数据</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <!--<div class="mb-3">
+                           <label for="editID" class="form-label">勾选：</label>
+                           <input type="checkbox" class="form-check-input" id="editCheckbox" name="checkbox">
+                       </div>-->
+                        <div class="mb-3">
+                            <label class="form-label">日期：</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">CNG总购气：</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">购气单位：</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">购气价格：</label>
+                            <input type="email" class="form-control">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChanges()">保存更改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--add-->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">增加数据</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addForm">
+                        <div class="clearfix">
+                            <div class="col-xs-6">
+                                <div class="form-group" style="position: relative;margin-bottom:20px">
+                                    <label>购气时间</label>
+                                    <tr>
+                                        <td><input type="date" name="date" maxlength="128" class="form-control"
+                                                   placeholder="购气时间" required id="id_date"></td>
+                                    </tr>
+                                    <span class="error-msg" style="color: red;position: absolute;"></span>
+                                </div>
+                            </div>
+                            {% for field in form %}
+                                <div class="col-xs-6">
+                                    <div class="form-group" style="position: relative;margin-bottom:20px">
+                                        <label>{{ field.label }}</label>
+                                        {{ field }}
+                                        <span class="error-msg" style="color: red;position: absolute;"></span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btnAdd">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>您确定要删除吗？</h5>
+                </div>
+                <div class="modal-body">
+                    <h3>删除后相关数据都将被删除且无法回复！您确定要继续删除吗？</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btnConfirmDelete">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+        $('#headnav').removeClass('bg-dark').addClass('bg-primary')
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
+                const toggle = document.getElementById(toggleId),
+                    nav = document.getElementById(navId),
+                    bodypd = document.getElementById(bodyId),
+                    headerpd = document.getElementById(headerId)
+
+// Validate that all variables exist
+                if (toggle && nav && bodypd && headerpd) {
+                    toggle.addEventListener('click', () => {
+// show navbar
+                        nav.classList.toggle('show')
+// change icon
+                        toggle.classList.toggle('bx-x')
+// add padding to body
+                        bodypd.classList.toggle('body-pd')
+// add padding to header
+                        headerpd.classList.toggle('body-pd')
+                    })
+                }
+            }
+
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.nav_link')
+
+            function colorLink() {
+                if (linkColor) {
+                    linkColor.forEach(l => l.classList.remove('active'))
+                    this.classList.add('active')
+                }
+            }
+
+            linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+            // Your code to run since DOM is loaded and ready
+        });
+    </script>
+    <script>
+        var DELETE_ID;
+        var CURRENT_ID;
+        $(function () {
+            bindBtnAddEvent();
+            bindBtnDeleteEvent();
+            bindBtnConfirmDeleteEvent();
+        })
+
+        function bindBtnAddEvent() {
+            date = document.getElementById('id_date').value
+            $("#btnAdd").click(function () {
+                $.ajax({
+                    url: "/buy/",
+                    type: "post",
+                    data: $("#addForm").serialize() + "&" + date,
+                    dataType: "JSON",
+                    success: function (res) {
+                        if (res.status) {
+                            location.reload();
+                        } else {
+                            alert('请检查输入完整性！')
+                        }
+                    }
+                })
+            })
+        }
+
+        function bindBtnDeleteEvent() {
+            $(".btn-delete").click(function () {
+                $("#deleteModal").modal("show");
+                DELETE_ID = $(this).attr("uid");
+            });
+        }
+
+        function bindBtnConfirmDeleteEvent() {
+            $("#btnConfirmDelete").click(function () {
+                $.ajax({
+                    url: "/buy/delete/",
+                    type: "GET",
+                    data: {
+                        uid: DELETE_ID
+                    },
+                    dataType: "JSON",
+                    success: function (res) {
+                        if (res.status) {
+                            alert("删除成功");
+                            $("#deleteModal").modal("hide");
+                            location.reload()
+                        } else {
+                            alert(res.error);
+                        }
+                    }
+                })
+            })
+        }
+    </script>
+    <script>
+        document.getElementById("typeSelect").value =
+        {{ type }}
+    </script>
+{% endblock %}

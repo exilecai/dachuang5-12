@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/analyses_meter_2.css' %}">
+</head>
+<body>
+<header>
+    <div class="logo"></div>
+    <div class="nav">
+        <ul>
+            <li><a href="/analyses/overall/1/" target="_self">
+                <button class="button2">总体概览</button>
+            </a></li>
+            <li><a href="/analyses/meter/1/" target="_self">
+                <button class="button2">表具计量</button>
+            </a></li>
+            <li><a href="{% url 'supervision' %}" target="_self">
+                <button class="button2">用气监测</button>
+            </a></li>
+            <li><a href="{% url 'leakage' %}" target="_self">
+                <button class="button2">泄漏预测</button>
+            </a></li>
+            <li><a href="{% url 'pipe' %}" target="_self">
+                <button class="button2">管容变化</button>
+            </a></li>
+            <li><a href="{% url 'temp' %}" target="_self">
+                <button class="button2">温压补偿</button>
+            </a></li>
+            <li><a href="/director/" target="_self">
+                <button class="button2">返回导航</button>
+            </a></li>
+        </ul>
+    </div>
+    <div class="showTime">当前时间</div>
+
+</header>
+
+<!-- 页面主体部分 -->
+<section class="mainbox">
+    <div class="menu">
+        <div class="mbox">
+            <a href="/analyses/meter/1/" target="_self">
+                <button1>
+                            <span class="span-mother">
+                                <span>上</span>
+                                <span>一</span>
+                                <span>页</span>
+                            </span>
+                    <span class="span-mother2">
+                                <span>上</span>
+                                <span>一</span>
+                                <span>页</span>
+                            </span>
+                </button1>
+            </a>
+        </div>
+    </div>
+    <div class="column1"></div>
+    <div class="column2">
+        <div class="box1">
+            <div class="title">
+                <p>各区域营业所更换超龄表数量</p>
+            </div>
+            <div class="pic">
+                <div class="line1">
+                    <div class="chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box2">
+            <div class="mbox1">
+                <div class="word">
+                    <p>随着使用年数的增加，膜式燃气表老化导致表具计量指标实际值偏低。</p>
+                </div>
+            </div>
+            <div class="mbox2">
+                <div class="word">
+                    <p>通过比较表具调换前后的用气量变化，计算模式燃气表的计量误差率。</p>
+                </div>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="title">
+                <p>存量超龄表损失气量</p>
+            </div>
+            <div class="pic">
+                <div class="line2">
+                    <div class="chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="{% static 'js/three.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/GLTFLoader.js' %}"></script>
+<script src="{% static 'js/flexible.js' %}"></script>
+<script src="{% static 'js/echarts_min.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/analyses_meter_2.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/OrbitControls.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/analyses_meter_three.js' %}"></script>
+<script>
+    var t = null;
+    t = setTimeout(time, 1000);//开始运行
+    function time() {
+        clearTimeout(t);//清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours();
+        var m = dt.getMinutes();
+        var s = dt.getSeconds();
+        document.querySelector(".showTime").innerHTML =
+            y + "年" + mt + "月" + day + "日     " + h + ":" + m + ":" + s;
+        t = setTimeout(time, 1000);//设置定时器，循环运行
+    }
+</script>
+</body>
+</html>

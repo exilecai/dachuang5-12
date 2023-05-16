@@ -1,0 +1,180 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>燃煤之籍</title>
+    <link href="{% static 'css/bootstrap.min.css' %}"
+          rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css"/>
+
+    <style>
+        .bg-image {
+            background-image: url("/imgg/img/gas_station.jpg");
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 400px;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+    <!--导航栏部分-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top  ">
+        <!--大屏幕会展开，navbar-dark与bg-dark表示设置为黑底白字，fixed-top表示固定在最上方-->
+        <div class="container">
+            <a class="navbar-brand" href="#">燃煤之籍<!--导航栏logo栏-->
+                <img src="{%static 'imgg/gas.png' %}" class="img-fluid" alt="">
+            </a>
+
+            <!-- 折叠按钮，用于将导航菜单折叠起来 -->
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- 折叠的导航菜单 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">基础数据管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">输差管理</a>
+                    </li>
+                    <!--下拉菜单样式定义-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            日常管理
+                        </a>
+                        <!-- 下拉菜单内容 -->
+                        <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">设备运维管理</a></li>
+                            <li><a class="dropdown-item" href="#">气量交接管理</a></li>
+                            <li><a class="dropdown-item" href="#">气损记录管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            数据查询分析
+                        </a>
+                        <!-- 下拉菜单内容 -->
+                        <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">销气数据</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href='#'>数据分析</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!--图片为背景的说明-->
+    <section class="p-5 bg-image">
+        <div class="container">
+            <div class="text-dark text-center ">
+                <h1>燃气购销差数据</h1>
+                <h3>通过可视化图标以及表格数据来详细了解燃气购销差</h3>
+                <button type="button" id="myButton" class="btn btn-primary btn-md mt-5">查看最新</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class=" p-5"><!--padding为5级-->
+        <div class="container">
+            <div class="row row-cols-md-2 row-cols-1 g-4"><!--当屏幕大于md时一行显示两张卡片，小于等于md时一行显示一张，g-4表示栅栏系统各行之间的间距-->
+                <div class="col">
+                    <div class="card h-100">
+                        <a href={% url 'back' %} class="text-decoration-none text-dark">
+                            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h4 class="card-text text-center">管网信息管理</h4>
+                            </div>
+                        </a>
+
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100"><!--height：100%-->
+                        <a href={% url 'infolist' %} class="text-decoration-none text-dark"><!--取消文本下划线 并且a标签中的文字默认蓝色 需要text-dark重新变为黑色-->
+                            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h4 class="card-text text-center">用户信息管理</h4>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href={% url 'datamanage3' %} class="text-decoration-none text-dark">
+                            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h4 class="card-text text-center">数据字典管理</h4>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href={% url 'datamanage4' %} class="text-decoration-none text-dark">
+                            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Card Image"><!--card-img-top表示图片在卡片上方-->
+                            <div class="card-body">
+                                <h4 class="card-text text-center">气源信息管理</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="p-5 bg-dark text-white text-center">
+		<div class="container">
+			<p class="lead">Copyright &copy;2023</p><!--lead是字体的一种样式-->
+		</div>
+	</footer>
+
+
+
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous">
+
+    </script>
+
+    <script src="/static/js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myButton").click(function () {
+                $('html, body').animate({
+                    scrollTop: "+=400px"
+                }, 'linear');
+            });
+        });
+
+    </script>
+</body>
+</html>

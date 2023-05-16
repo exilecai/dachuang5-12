@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/analyses_meter_1.css' %}">
+</head>
+<body>
+<header>
+    <div class="logo"></div>
+    <div class="nav">
+        <ul>
+            <li><a href="/analyses/overall/1/" target="_self">
+                <button class="button2">总体概览</button>
+            </a></li>
+            <li><a href="/analyses/meter/1/" target="_self">
+                <button class="button2">表具计量</button>
+            </a></li>
+            <li><a href="{% url 'supervision' %}" target="_self">
+                <button class="button2">用气监测</button>
+            </a></li>
+            <li><a href="{% url 'leakage' %}" target="_self">
+                <button class="button2">泄漏预测</button>
+            </a></li>
+            <li><a href="{% url 'pipe' %}" target="_self">
+                <button class="button2">管容变化</button>
+            </a></li>
+            <li><a href="{% url 'temp' %}" target="_self">
+                <button class="button2">温压补偿</button>
+            </a></li>
+            <li><a href="/director/" target="_self">
+                <button class="button2">返回导航</button>
+            </a></li>
+        </ul>
+    </div>
+    <div class="showTime">当前时间</div>
+
+</header>
+
+<!-- 页面主体部分 -->
+<section class="mainbox">
+    <div class="menu">
+        <div class="mbox">
+            <a href="/analyses/meter/2/" target="_self">
+                <button1>
+                            <span class="span-mother">
+                                <span>下</span>
+                                <span>一</span>
+                                <span>页</span>
+                            </span>
+                    <span class="span-mother2">
+                                <span>下</span>
+                                <span>一</span>
+                                <span>页</span>
+                            </span>
+                </button1>
+            </a>
+        </div>
+    </div>
+    <div class="box1">
+        <div class="title">
+            <p>超龄表损失函数</p>
+        </div>
+        <div class="pic">
+            <div class="line1">
+                <div class="chart"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box2">
+        <div class="title">
+            <p>表具使用时间分布</p>
+        </div>
+        <div class="pic">
+            <div class="bar1">
+                <div class="chart"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box3">
+        <div class="title">
+            <p>各区域营业所降低购销差量</p>
+        </div>
+        <div class="list">
+            <table>
+                <tr>
+                    <th>区域</th>
+                    <th>降低购销差量m<sup>2</sup></th>
+                </tr>
+                <tr>
+                    <td align="center">第一营业所</td>
+                    <td align="center">18</td>
+                </tr>
+                <tr class="lan">
+                    <td align="center">第二营业所</td>
+                    <td align="center">12</td>
+                </tr>
+                <tr>
+                    <td align="center">第三营业所</td>
+                    <td align="center">22</td>
+                </tr>
+                <tr class="lan">
+                    <td align="center">第四营业所</td>
+                    <td align="center">30</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="box4">
+        <div class="word">
+            <p>根据换表前后同比、环比用气数据求得超龄皮膜表(>10年)以及部分未超龄皮膜表老化的计量衰减规律。</p>
+        </div>
+    </div>
+    <div class="box5">
+        <div class="word">
+            <p>以月为单位归纳皮膜表的使用时间后，统计相对应的表具数量，制成图表，观察分布规律。</p>
+        </div>
+    </div>
+    <div class="box6">
+        <div class="word">
+            <p>通过对非正常计量损失的反复大量研究，多次更新优化算法后，购销差量得到了显著降低。</p>
+        </div>
+    </div>
+    <div class="box7">
+        <div class="pic">
+            <div class="bar2">
+                <div class="chart"></div>
+            </div>
+        </div>
+        <div class="title">
+            <p>超龄表数量和占比趋势</p>
+        </div>
+    </div>
+    <div class="box8">
+        <div class="word">
+            <p1>观察大于</p1>
+            <br>
+            <p2>10</p2>
+            <p3>年</p3>
+            <br>
+            <p4>同比、环比用气</p4>
+            <br>
+            <p5>数据</p5>
+        </div>
+    </div>
+    <div class="box9">
+        <div class="word">
+            <p1>使用</p1>
+            <br>
+            <p2>超龄表损失算法</p2>
+            <br>
+            <p3>估算损失气量</p3>
+        </div>
+    </div>
+    <div class="box10">
+        <div class="word">
+            <p1>同时完成</p1>
+            <br>
+            <p2>超龄表的</p2>
+            <br>
+            <p3>时间</p3>
+            <p4>和</p4>
+            <p5>空间</p5>
+            <br>
+            <p6>分布计算</p6>
+        </div>
+    </div>
+</section>
+<script src="{% static 'js/flexible.js' %}"></script>
+<script src="{% static 'js/echarts_min.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/analyses_meter_1.js' %}"></script>
+<script>
+    var t = null;
+    t = setTimeout(time, 1000);//开始运行
+    function time() {
+        clearTimeout(t);//清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours();
+        var m = dt.getMinutes();
+        var s = dt.getSeconds();
+        document.querySelector(".showTime").innerHTML =
+            y + "年" + mt + "月" + day + "日     " + h + ":" + m + ":" + s;
+        t = setTimeout(time, 1000);//设置定时器，循环运行
+    }
+</script>
+</body>
+</html>
